@@ -1,0 +1,126 @@
+body {
+  background: #050505;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+.circle {
+  position: relative;
+  /* Taille augmentée à 550px pour un effet plus imposant */
+  width: 550px; 
+  height: 550px;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 0 70px rgba(0, 210, 255, 0.25); /* Lueur légèrement augmentée */
+}
+
+.circle::before {
+  content: '';
+  position: absolute;
+  /* On augmente la taille du dégradé pour couvrir le nouveau diamètre */
+  width: 180%; 
+  height: 180%;
+  background: conic-gradient(transparent, #00d2ff, #3a7bd5, transparent 60%);
+  animation: rotate 3s linear infinite;
+}
+
+.circle::after {
+  content: '';
+  position: absolute;
+  inset: 10px; /* Bordure un peu plus épaisse pour l'équilibre visuel */
+  background: #0a0a0a;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.card {
+  position: relative;
+  z-index: 2;
+  /* Largeur augmentée pour utiliser l'espace du grand cercle */
+  width: 350px; 
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: #00d2ff;
+  font-size: 2rem; /* Titre un peu plus grand */
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+}
+
+.input-box {
+  margin-bottom: 15px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px; /* Plus de confort à la saisie */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  outline: none;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.input-box input:focus {
+  border-color: #00d2ff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.1);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+  box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
+}
+
+button:hover {
+  transform: scale(1.03);
+  filter: brightness(1.2);
+}
+
+.link-text {
+  color: #aaa; /* Texte un peu plus clair pour la lisibilité */
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+.link-text a {
+  color: #00d2ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-text a:hover {
+  text-decoration: underline;
+}

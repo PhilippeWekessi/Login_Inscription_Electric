@@ -1,0 +1,132 @@
+body {
+  background: #050505; /* Noir profond */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden; /* Évite les barres de défilement inutiles */
+}
+
+.circle {
+  position: relative;
+  width: 400px; /* Taille légèrement augmentée pour le confort */
+  height: 400px;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(0, 210, 255, 0.2); 
+}
+
+/* L'élément qui crée l'effet de rotation lumineuse */
+.circle::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: conic-gradient(transparent, #00d2ff, #3a7bd5, transparent 60%);
+  animation: rotate 2.5s linear infinite;
+}
+
+/* Le masque central pour créer l'anneau */
+.circle::after {
+  content: '';
+  position: absolute;
+  inset: 6px; /* Épaisseur de la bordure lumineuse */
+  background: #0a0a0a;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.card {
+  position: relative;
+  z-index: 2; /* Doit être supérieur au z-index du masque (::after) */
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacement uniforme entre les inputs */
+}
+
+.login-title {
+  color: #00d2ff;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  outline: none;
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+  box-sizing: border-box; /* Important pour que le padding ne dépasse pas */
+}
+
+.input-box input:focus {
+  border-color: #00d2ff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.1);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+  margin-top: 5px;
+}
+
+button:hover {
+  transform: scale(1.02);
+  filter: brightness(1.2);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.link-text {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.link-text a {
+  color: #00d2ff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.link-text a:hover {
+  text-decoration: underline;
+  filter: brightness(1.3);
+}
